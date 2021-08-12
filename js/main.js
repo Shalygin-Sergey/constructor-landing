@@ -109,11 +109,26 @@ const movieConstructor = (selector, options) => {
 	const app = document.querySelector(selector);
 	app.classList.add('body-app');
 
+	// проверяем и создаем фавикон при отрисовке страницы
+	if (options.favicon) {
+		const index = options.favicon.lastIndexOf('.'); // находим индекс точки в пути фавикона
+		const type = options.favicon.substring(index + 1); // находим тип фавикона
+		
+
+		const favicon = getElement('link', null, {
+			rel: 'icon',
+			href: options.favicon,
+			type: 'image/' + (type === 'svg' ? 'svg-xml' : type),
+		});
+		document.head.append(favicon); // вставляем в хэад
+	}
+
 	app.style.backgroundImage = options.background ?
 		`url('${options.background}')` : '';
 
 	// задаем title для страницы
 	document.title = options.title;
+	
 
 	// проверка если хедер введен то отрисосываем
 
@@ -130,7 +145,7 @@ const movieConstructor = (selector, options) => {
 // деструктуризация свойства param сразу несколько создаем в виде переменных
 const createMain = ({
 	title, 
-	main: {genre, rating, description, trailer}}) => {
+	main: {genre, rating, description, trailer}}) => { // создаем аргументы и в них же будем передавать значения
 		// создаем элемент main а далее вложенные элементы, даем им класс и отрисовываем
 		const main = getElement('main');
 		const container = getElement('div', ['container']);
@@ -152,12 +167,14 @@ const createMain = ({
 
 		// <div class="rating animated fadeInRight">
 		if (rating) {
+			// создаем элементы звездочек по рейтингу
 			const ratingBlock = getElement('div', ['rating', 'animated', 'fadeInRight']);
 			const ratingStars = getElement('div', ['rating-stars']);
 			const ratingNumber = getElement('div', ['rating-number'], {
 				textContent: `${rating}/10`
 			});
 
+			// пишем цикл отрисовки звездочек, через создание атрибутов 
 			for (let i = 0; i < 10; i++) {
 				const star = getElement('img', ['star'], {
 					alt: i ? '' : `Рейтинг ${rating} из 10`,
@@ -169,6 +186,44 @@ const createMain = ({
 			ratingBlock.append(ratingStars, ratingNumber);
 			content.append(ratingBlock);
 		}
+		// добавляем элменет h1 с текстом и классами
+		content.append(getElement('h1', ['main-title', 'animated', 'fadeInRight'], {
+			textContent: title},
+		))
+
+		// если дескрипшон есть
+		if (description) {
+			// мы в контент аппендим то что вернет наша функция getElement
+			content.append(getElement('p', ['main-description', 'animated', 'fadeInRight'], {
+				textContent: description},
+			));
+		}
+		// создаем правило по трейлеру
+		if (trailer) {
+			const youtubeLink = getElement('a', 
+			['button', 'animated', 'fadeInRight', 'youtube-modal'],
+			{
+				href: trailer,
+				textContent: 'Смотреть трейлер',
+			})
+
+			const youtubeImageLink = getElement('a', ['play', 'youtube-modal'],
+			{
+				href: trailer,
+				ariaLabel: 'Смотреть трейлер'
+			})
+
+			const iconPlay = getElement('img', ['play-img'],
+			{
+				src: 'img/play.svg',
+				alt: '',
+				ariaHidden: true,
+			})
+
+			content.append(youtubeLink); // в контент добавляем главную кнопку
+			wrapper.append(youtubeImageLink); // в обертку добавляем кнопку по центру экрана
+			youtubeImageLink.append(iconPlay); // иконку добавляем в кнопку что по центру
+		}
 
 
 		return main;
@@ -179,6 +234,7 @@ const createMain = ({
 movieConstructor('.app', {
 	title: 'Ведьмак',
 	background: 'witcher/background.jpg',
+	favicon: 'witcher/logo.png',
 	header: {
 		logo: 'witcher/logo.png',
 		social: [
