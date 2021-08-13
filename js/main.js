@@ -41,24 +41,24 @@ const getElement = (tagName, classNames, attributes) => {
 	return element;
 }
 // создаем хедер с параметрами
-const createHeader = (param) => {
+const createHeader = ({title, header:{logo, menu, social}}) => {
 	// всегда создаем элемент с помощью getElement
 	const header = getElement('header');
 	const container = getElement('div', ["container"]);
 	const wrapper = getElement('div', ['header']);
 
 	// берем из параметров свойство logo если есть то создаем
-	if (param.header.logo) {
+	if (logo) {
 		// создаем элемент img class logo
-		const logo = getElement('img', ['logo'], {
-			src: param.header.logo,
-			alt: 'Логотип ' + param.title,
+		const logoElem = getElement('img', ['logo'], {
+			src: logo,
+			alt: 'Логотип ' + title,
 		}); 
 		
-		wrapper.append(logo); // вставляем в wrapper logo
+		wrapper.append(logoElem); // вставляем в wrapper logo
 	}
 
-	if (param.header.menu) {
+	if (header.menu) {
 		// const menuWrapper = getElement('div', ['menu-list']);
 		// const allMenu = param.header.menu.map((item) => {
 		// 	const menuLink = getElement('a', ['menu-link']) 
@@ -71,7 +71,7 @@ const createHeader = (param) => {
 		// wrapper.append(menuWrapper);
 
 		const nav = getElement('nav', ['menu-list']);
-		const allMenuLink = param.header.menu.map((item) => {
+		const allMenuLink = menu.map((item) => {
 			const link = getElement('a', ['menu-link'], {
 				href: item.link,
 				textContent: item.title,
@@ -82,9 +82,9 @@ const createHeader = (param) => {
 		wrapper.append(nav);
 	};
 
-	if (param.header.social) {
+	if (social) {
 		const socialWrapper = getElement('div', ['social']);
-		const allSocial = param.header.social.map((item) => {
+		const allSocial = social.map((item) => {
 			const socialLink = getElement('a', ['social-link']);
 			socialLink.append(getElement('img', [], {
 				src: item.image,
