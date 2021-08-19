@@ -52,6 +52,7 @@ const createHeader = ({title, header:{logo, menu, social}}) => {
 		const allMenuLink = menu.map((item) => {
 			const link = getElement('a', ['menu-link'], {
 				href: item.link,
+				target: '_blank',
 				textContent: item.title,
 			});
 			return link;
@@ -76,6 +77,7 @@ const createHeader = ({title, header:{logo, menu, social}}) => {
 				alt: item.title,
 			}));
 			socialLink.href = item.link;
+			socialLink.target = '_blank';
 			return socialLink;
 		});
 		socialWrapper.append(... allSocial);
@@ -336,75 +338,85 @@ const createFooter = ({footer:{leftBlock, navMenu}}) => {
 
 
 
-movieConstructor('.app', {
-	title: 'Ведьмак',
-	background: 'witcher/background.jpg',
-	favicon: 'witcher/logo.png',
+/* movieConstructor('.app', {
+	title: 'Блич',
+	background: 'witcher/bleach/background.jpg',
+	favicon: 'witcher/bleach/logo.jpg',
 	fontColor: '#ffffff',
-	backgroundColor: '#141218',
+	backgroundColor: '#000000',
 	subColor: '#9D2929',
 	header: {
-		logo: 'witcher/logo.png',
+		logo: 'witcher/bleach/logo.jpg',
 		social: [
 			{
 				title: 'Twitter',
-				link: 'https://twitter.com',
+				link: 'https://twitter.com/hashtag/BLEACH?src=hashtag_click',
 				image: 'witcher/social/twitter.svg'
 			},
 			{
 				title: 'Instagram',
-				link: 'https://instagram.com',
+				link: 'https://www.instagram.com/official.bleach',
 				image: 'witcher/social/instagram.svg'
 			},
 			{
 				title: 'Facebook',
-				link: 'https://facebook.com',
+				link: 'https://www.facebook.com/BLEACHMOBILEGAMES/',
 				image: 'witcher/social/facebook.svg'
 			},
 		],
 		menu: [
 			{
 				title: 'Описание',
-				link: '#',
+				link: 'https://thealmanach.ru/social/blich-opisanie-personazhei-anime-blich-opisanie-syuzheta-osnovnye.html',
 				
 			},
 			{
 				title: 'Трейлер',
-				link: '#',
+				link: 'https://www.youtube.com/watch?v=6fsK9PT1nG0',
 				
 			},
 			{
 				title: 'Отзывы',
-				link: '#',
+				link: 'https://otzovik.com/reviews/multserial_bleach/',
 				
 			},
 		],
 	},
 	main: {
-		genre: '2019, фэнтези',
-		rating: '8',
-		description: 'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже	заколдованных принцесс.',
-		trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
+		genre: '2006, аниме',
+		rating: '9',
+		description: 'Bleach: Memories of Nobody — анимационный фильм, снятый по мотивам манги «Блич» Тайто Кубо, но никак не связанный с основной сюжетной линией. Сценарий написан Масаси Сого',
+		trailer: 'https://www.youtube.com/watch?v=6fsK9PT1nG0',
 		slider: [
 			{
-				img: 'witcher/series/series-1.jpg',
-				title: 'Начало конца',
+				img: 'witcher/bleach/series/series-1.jpg',
+				title: 'Шинигами',
 				subtitle: 'Серия №1',
 			},
 			{
-				img: 'witcher/series/series-2.jpg',
-				title: 'Четыре марки',
+				img: 'witcher/bleach/series/series-2.jpg',
+				title: 'Общество душ',
 				subtitle: 'Серия №2',				
 			},
 			{
-				img: 'witcher/series/series-3.jpg',
-				title: 'Предательская луна',
+				img: 'witcher/bleach/series/series-3.jpg',
+				title: 'Пустые',
 				subtitle: 'Серия №3',				
 			},
 			{
-				img: 'witcher/series/series-4.jpg',
-				title: 'Банкеты, ублюдки и похороны',
+				img: 'witcher/bleach/series/series-4.jpg',
+				title: 'Аранкары',
 				subtitle: 'Серия №4',					
+			},
+			{
+				img: 'witcher/bleach/series/series-5.jpg',
+				title: 'Квинси',
+				subtitle: 'Серия №5',					
+			},
+			{
+				img: 'witcher/bleach/series/series-6.jpg',
+				title: 'Кучики Рукия',
+				subtitle: 'Серия №6',					
 			},
 		]
 	},
@@ -426,7 +438,7 @@ movieConstructor('.app', {
 			
 		]
 	}
-});
+}); */
 
 // что бы не скакал белый экран
 // overflow-x hidden в боди и в хтмл и Position relative

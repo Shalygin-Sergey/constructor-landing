@@ -14,11 +14,117 @@
 
   <script src="js/swiper.min.js" defer></script>
   <script src="youtube-modal/index.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <!-- <script src="js/main.js" defer></script> -->
+  <script src="js/bleach.js" defer></script>
 
 </head>
 
 <body>
+
+
+  <script type="module">
+    movieConstructor('.app', {
+      title: '11', // 
+      background: 'witcher/bleach/background.jpg',
+      favicon: 'witcher/bleach/logo.jpg',
+      fontColor: '#ffffff',
+      backgroundColor: '#000000',
+      subColor: '#9D2929',
+      header: {
+        logo: 'witcher/bleach/logo.jpg',
+        social: [
+          {
+            title: 'Twitter',
+            link: 'https://twitter.com/hashtag/BLEACH?src=hashtag_click',
+            image: 'witcher/social/twitter.svg'
+          },
+          {
+            title: 'Instagram',
+            link: 'https://www.instagram.com/official.bleach',
+            image: 'witcher/social/instagram.svg'
+          },
+          {
+            title: 'Facebook',
+            link: 'https://www.facebook.com/BLEACHMOBILEGAMES/',
+            image: 'witcher/social/facebook.svg'
+          },
+        ],
+        menu: [
+          {
+            title: 'Описание',
+            link: 'https://thealmanach.ru/social/blich-opisanie-personazhei-anime-blich-opisanie-syuzheta-osnovnye.html',
+            
+          },
+          {
+            title: 'Трейлер',
+            link: 'https://www.youtube.com/watch?v=6fsK9PT1nG0',
+            
+          },
+          {
+            title: 'Отзывы',
+            link: 'https://otzovik.com/reviews/multserial_bleach/',
+            
+          },
+        ],
+      },
+      main: {
+        genre: '2006, аниме',
+        rating: '9',
+        description: 'Bleach: Memories of Nobody — анимационный фильм, снятый по мотивам манги «Блич» Тайто Кубо, но никак не связанный с основной сюжетной линией. Сценарий написан Масаси Сого',
+        trailer: 'https://www.youtube.com/watch?v=6fsK9PT1nG0',
+        slider: [
+          {
+            img: 'witcher/bleach/series/series-1.jpg',
+            title: 'Шинигами',
+            subtitle: 'Серия №1',
+          },
+          {
+            img: 'witcher/bleach/series/series-2.jpg',
+            title: 'Общество душ',
+            subtitle: 'Серия №2',				
+          },
+          {
+            img: 'witcher/bleach/series/series-3.jpg',
+            title: 'Пустые',
+            subtitle: 'Серия №3',				
+          },
+          {
+            img: 'witcher/bleach/series/series-4.jpg',
+            title: 'Аранкары',
+            subtitle: 'Серия №4',					
+          },
+          {
+            img: 'witcher/bleach/series/series-5.jpg',
+            title: 'Квинси',
+            subtitle: 'Серия №5',					
+          },
+          {
+            img: 'witcher/bleach/series/series-6.jpg',
+            title: 'Кучики Рукия',
+            subtitle: 'Серия №6',					
+          },
+        ]
+      },
+      footer: {
+        leftBlock: '© 2020 The Witcher. All right reserved.',
+        navMenu: [
+          {
+            title: 'Privacy Policy',
+            link: '#',
+          },
+          {
+            title: 'Terms of Service',
+            link: '#',
+          },
+          {
+            title: 'Legal',
+            link: '#',
+          },
+          
+        ]
+      }
+});
+  </script>
 
   <div class="app"></div>
  <!-- 
