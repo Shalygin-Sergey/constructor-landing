@@ -1,4 +1,4 @@
-# constructor-landing
+# Конструктор сайтов
 
 Сайт конструктор на чистом JavaScript 
 
